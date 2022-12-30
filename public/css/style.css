@@ -1,5 +1,5 @@
 body {
-    background-color: #434348;
+    background-color: #111117;
     color: white;
 }
 
@@ -14,7 +14,7 @@ a {
 }
 
 .bg-1 {
-    background-color: #4e4e4e;
+    background-color: #1f1f1f;
 }
 
 .text-color-1{
@@ -24,7 +24,7 @@ a {
 input.input-text{
     width: 100%;
     border: none;
-    background-color: #4e4e4e;
+    background-color: #1f1f1f;
     color: #a5a5a5;
     line-height: 22px;
 }
