@@ -31,7 +31,7 @@
             <div class="d-flex mx-auto my-2">
                 <input type="checkbox" name="remember" id="remember" class="me-1">Remember me
             </div>
-            <input type="submit" value="Login &#10140;" class="login-btn py-2 my-2 text-white">
+            <input type="submit" value="Login &#10140;" class="login-btn py-2 my-2 text-white mx-2">
             <div>
                 Don't have an account? <a href="/register" class="text-color-1">Register now!</a>
             </div>

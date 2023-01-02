@@ -16,6 +16,15 @@ return new class extends Migration
         Schema::create('movie', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('description');
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genre');
+            $table->unsignedBigInteger('actor_id');
+            $table->foreign('actor_id')->references('id')->on('actor');
+            $table->string('director');
+            $table->date('release_date');
+            $table->string('image_url');
+            $table->string('bg_url');
         });
     }
 

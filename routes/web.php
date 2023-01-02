@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,9 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('/addactor', function() {
+    return view('add_actor');
+});
+
+Route::post('/insertactor', [ActorController::class, 'insertActor']);

@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('actor', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->string('gender');
-            $table->string('biography');
+            $table->string('biography', 10000);
             $table->date('dob');
             $table->string('pob');
             $table->string('image_url');
