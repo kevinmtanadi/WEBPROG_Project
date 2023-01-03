@@ -26,8 +26,8 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/addactor', function() {
-    return view('add_actor');
-});
+Route::get('/addactor', [ActorController::class, 'addActor']);
 
 Route::post('/insertactor', [ActorController::class, 'insertActor']);
+
+Route::get('/actor', [ActorController::class, 'showActor']);

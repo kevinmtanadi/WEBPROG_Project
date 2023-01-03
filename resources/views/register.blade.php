@@ -11,13 +11,13 @@
         <h3 class="my-5">
             Hello, Welcome back to MovieList
         </h3>
-        <form action="" class="mx-auto">
+        <form action="" class="mx-auto login-form">
             <div class="row mx-auto my-3 bg-1 input-box py-2">
                 <label for="username" class="col-4 d-flex align-items-center">
                         Username
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="username" name="username" id="username" placeholder="Enter your username">
+                    <input class="input-text w-100" type="username" name="username" id="username" placeholder="Enter your username">
                 </div>
             </div>
             <div class="row mx-auto my-3 bg-1 input-box py-2">
@@ -25,7 +25,7 @@
                         Email
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="email" name="email" id="email" placeholder="Enter your email">
+                    <input class="input-text w-100" type="email" name="email" id="email" placeholder="Enter your email">
                 </div>
             </div>
             <div class="row mx-auto my-3 bg-1 input-box py-2">
@@ -33,7 +33,7 @@
                         Password
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="password" name="password" id="password" placeholder="Enter your password">
+                    <input class="input-text w-100" type="password" name="password" id="password" placeholder="Enter your password">
                 </div>
             </div>
             <div class="row mx-auto my-3 bg-1 input-box py-2">
@@ -41,7 +41,7 @@
                         Confirm Password
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="confirm_password" name="confirm_password" id="confirm_password" placeholder="Enter your confirm password">
+                    <input class="input-text w-100" type="confirm_password" name="confirm_password" id="confirm_password" placeholder="Enter your confirm password">
                 </div>
             </div>
             <input type="submit" value="Register &#10140;" class="login-btn py-2 my-2 text-white">

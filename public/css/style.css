@@ -21,8 +21,12 @@ a {
     color: #e93b43;
 }
 
+.text-color-2 {
+    color: #636363;
+}
+
+
 input.input-text{
-    width: 100%;
     border: none;
     background-color: #1f1f1f;
     color: #a5a5a5;
@@ -35,7 +39,7 @@ input.input-text{
     width: 100%;
 }
 
-form {
+.login-form{
     width: 40%;
     min-width: 400px;
 }
@@ -45,6 +49,10 @@ form {
     background-color: #e93b43;
     border-radius: 10px;
     width: 100%;
+}
+
+.b-radius {
+    border-radius: 10px;
 }
 
 .create-btn {

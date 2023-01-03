@@ -11,7 +11,7 @@
                     <a href="/movies" class="text-white">Movies</a>
                 </li>
                 <li class="nav-item mx-2 my-auto">
-                    <a href="/contact" class="text-white">Actors</a>
+                    <a href="/actor" class="text-white">Actors</a>
                 </li>
                 <li class="nav-item mx-2 my-auto">
                     <a href="/register" class="btn btn-primary">Register</a>

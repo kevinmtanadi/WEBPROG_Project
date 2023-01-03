@@ -11,13 +11,13 @@
         <h3 class="my-5">
             Hello, Welcome back to MovieList
         </h3>
-        <form action="" class="mx-auto">
+        <form action="" class="mx-auto login-form">
             <div class="row mx-auto my-3 bg-1 input-box py-2">
                 <label for="email" class="col-4 d-flex align-items-center">
                         Email
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="email" name="email" id="email" placeholder="Enter your email">
+                    <input class="input-text w-100" type="email" name="email" id="email" placeholder="Enter your email">
                 </div>
             </div>
             <div class="row mx-auto my-3 bg-1 input-box py-2">
@@ -25,7 +25,7 @@
                         Password
                 </label>
                 <div class="col-8">
-                    <input class="input-text" type="password" name="password" id="password" placeholder="Enter your password">
+                    <input class="input-text w-100" type="password" name="password" id="password" placeholder="Enter your password">
                 </div>
             </div>
             <div class="d-flex mx-auto my-2">

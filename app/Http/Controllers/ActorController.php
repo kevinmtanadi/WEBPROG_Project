@@ -10,7 +10,15 @@ use Illuminate\Support\Facades\Validator;
 class ActorController extends Controller
 {
     //
-    public function show(Request $req) {
+
+    public function showActor(Request $req) {
+
+        $search = $req->search;
+        $actors = Actor::where('name', 'LIKE', "%$search%")->paginate();
+        return view('actor', ['actors' => $actors]);
+    }
+
+    public function addActor(Request $req) {
         return view('add_actor');
     }
 
@@ -35,7 +43,7 @@ class ActorController extends Controller
         $extension = $file->getClientOriginalExtension();
         $filename = time().'.'.$extension;
 
-        Storage::putFileAs('./public/images/', $file, $filename);
+        Storage::putFileAs('public/images/', $file, $filename);
 
         Actor::insert([
             'name' => $req->name,
