@@ -16,10 +16,16 @@ class MovieController extends Controller
 {
     //
 
-    public function showMovie(Request $req) {
+    public function index(Request $req) {
         $movies = Movie::all();
 
-        return view('movie_detail', ['movies' => $movies]);
+        return view('movie', ['movies' => $movies]);
+    }
+
+    public function showMovie($movie_id) {
+        $movie = Movie::where('id', $movie_id)->first();
+
+        return view('movie_detail', ['movie' => $movie]);
     }
 
     public function addMovie(Request $req) {
@@ -63,21 +69,25 @@ class MovieController extends Controller
             'bg_url' => $bg_filename
         ]);
 
+        $actors_id = [];
+        $characters_name = [];
+        foreach ($new_req as $key => $val) {
+            if (str_starts_with($key, 'actor-')) {
+                array_push($actors_id, $val);
+            }
+            if (str_starts_with($key, 'c-name-')) {
+                array_push($characters_name, $val);
+            }
+        }
+
         $movie = Movie::where('title', $req->title)->first();
 
-        return $new_req;
-
-        foreach ($new_req as $key => $val) {
-
-            if (str_starts_with($key, 'actor-')) {
-                $actor = Actor::where('id', $val)->first();
-
-                MovieActor::insert([
-                    'movie_id' => $movie->id,
-                    'actor_id' => $val,
-                    //'character_name' => Something idk
-                ]);
-            }
+        for ($i = 0; $i < count($actors_id); $i++) {
+            MovieActor::insert([
+                'movie_id' => $movie->id,
+                'actor_id' => $actors_id[$i],
+                'character_name' => $characters_name[$i],
+            ]);
         }
 
         $genres = $req->input('genre');
@@ -88,7 +98,6 @@ class MovieController extends Controller
                 'genre_id' => $val
             ]);
         }
-
 
         // Movie::insert([
         //     'title' => $req->title,

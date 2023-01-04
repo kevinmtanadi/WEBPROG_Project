@@ -80,3 +80,19 @@ input.input-text{
     height: 45vh;
     background-color: #000000;
 }
+
+.wrapper {
+    width: 40%;
+    position: relative;
+    top: 50%;
+    left: 10%;
+}
+
+a:hover, a:focus{
+    outline: none;
+    color: white;
+}
+
+a{
+    color: white;
+}

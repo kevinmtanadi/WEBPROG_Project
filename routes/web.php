@@ -37,4 +37,6 @@ Route::get('/addmovie', [MovieController::class, 'addMovie']);
 
 Route::post('/insertmovie', [MovieController::class, 'insertMovie']);
 
-Route::get('/movies', [MovieController::class, 'showMovie']);
+Route::get('/movies', [MovieController::class, 'index']);
+
+Route::get('/movies/{movie_id}', [MovieController::class, 'showMovie']);
