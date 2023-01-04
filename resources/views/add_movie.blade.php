@@ -12,24 +12,29 @@
         @if ($errors->any())
             <strong>{{ $errors->first() }}</strong>
         @endif
-        <form  enctype="multipart/form-data" action="/insertactor" method="POST" class="row w-100">
+        <form  enctype="multipart/form-data" action="/insertmovie" method="POST" class="row w-100">
             @csrf
             <div class="my-1">
                 <label for="title" class="mb-1">Title</label>
                 <input type="text" class="form-control input-text w-100 text-white" name="title" id="title">
             </div>
             <div class="my-1">
-                <label for="biography" class="mb-1">Description</label>
-                <textarea name="biography" class="form-control bg-1 text-white border-0" id="" cols="30" rows="10" style="transition: none"></textarea>
+                <label for="description" class="mb-1">Description</label>
+                <textarea name="description" class="form-control bg-1 text-white border-0" id="" cols="30" rows="10" style="transition: none"></textarea>
             </div>
             <div class="my-1">
                 <label for="genre" class="mb-1">Genre</label>
-                <input type="text" class="form-control input-text w-100 text-white" name="genre" id="genre">
+                <select multiple name="genre[]" id="genre" class="form-select bg-1 text-white border-0">
+                    <option selected disabled='disabled'>Select an option</option>
+                    @foreach ($genres as $g)
+                    <option value="{{$g->id}}">{{$g->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="my-1">
                 <p class="mb-3">Actors</p>
                 <div class="wrapper mx-3" id="actors-list">
-                    <div id="actors-wrapper">
+                    <div id="actors-wrapper-1">
                         <div class="row d-flex">
                             <div class="col">
                                 <label for="actor-1" class="mb-1">Actor</label>
@@ -43,6 +48,57 @@
                             <div class="col">
                                 <label for="c-name-1" class="mb-1">Character Name</label>
                                 <input type="text" class="form-control input-text w-100 text-white"  name="c-name-1" id="c-name-1">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="actors-wrapper-2" style="display: none">
+                        <div class="row d-flex">
+                            <div class="col">
+                                <label for="actor-2" class="mb-1">Actor</label>
+                                <select name="actor-2" id="actor-2" class="form-select bg-1 text-white border-0">
+                                    <option selected disabled='disabled'>-- Open this select menu --</option>
+                                    @foreach ($actors as $a)
+                                    <option value="{{$a->id}}">{{$a->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="c-name-2" class="mb-1">Character Name</label>
+                                <input type="text" class="form-control input-text w-100 text-white"  name="c-name-2" id="c-name-2">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="actors-wrapper-3" style="display: none">
+                        <div class="row d-flex">
+                            <div class="col">
+                                <label for="actor-3" class="mb-1">Actor</label>
+                                <select name="actor-3" id="actor-3" class="form-select bg-1 text-white border-0">
+                                    <option selected disabled='disabled'>-- Open this select menu --</option>
+                                    @foreach ($actors as $a)
+                                    <option value="{{$a->id}}">{{$a->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="c-name-3" class="mb-1">Character Name</label>
+                                <input type="text" class="form-control input-text w-100 text-white"  name="c-name-3" id="c-name-3">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="actors-wrapper-4" style="display: none">
+                        <div class="row d-flex">
+                            <div class="col">
+                                <label for="actor-4" class="mb-1">Actor</label>
+                                <select name="actor-4" id="actor-4" class="form-select bg-1 text-white border-0">
+                                    <option selected disabled='disabled'>-- Open this select menu --</option>
+                                    @foreach ($actors as $a)
+                                    <option value="{{$a->id}}">{{$a->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="c-name-4" class="mb-1">Character Name</label>
+                                <input type="text" class="form-control input-text w-100 text-white"  name="c-name-4" id="c-name-4">
                             </div>
                         </div>
                     </div>

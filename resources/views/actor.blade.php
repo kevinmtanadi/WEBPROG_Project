@@ -8,15 +8,15 @@
 <body class="d-flex flex-column min-vh-100">
     @include('layout.navbar')
 
-    <div class="container my-2">
+    <div class="container my-3">
         <form action="/actor" class="d-flex justify-content-between">
             <h3>Actors</h3>
             <input class="input-text b-radius px-3" type="text" name="search" id="search" placeholder="Search Actor">
         </form>
 
-        <div class="row row-cols-5 my-4">
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
             @foreach ($actors as $a)
-            <div class="col">
+            <div class="col my-2">
                 <div class="card bg-1">
                     <div class="card-body">
                     <img class="w-100" width="200px" height="270px" class="my-2" src="{{Storage::url('images/'.$a->image_url)}}" alt="None">
@@ -24,7 +24,7 @@
                             {{ $a->name}}
                         </div>
                         <div class="card-text text-color-2">
-                            Movies of this actor
+                            {{ $a->movies[0]->movie->title}}
                         </div>
                     </div>
                 </div>

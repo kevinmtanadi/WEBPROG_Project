@@ -72,3 +72,11 @@ input.input-text{
 .form-control:focus {
     background-color: #1f1f1f;
 }
+
+.bg_img {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    height: 45vh;
+    background-color: #000000;
+}

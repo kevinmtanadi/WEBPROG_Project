@@ -34,3 +34,7 @@ Route::post('/insertactor', [ActorController::class, 'insertActor']);
 Route::get('/actor', [ActorController::class, 'showActor']);
 
 Route::get('/addmovie', [MovieController::class, 'addMovie']);
+
+Route::post('/insertmovie', [MovieController::class, 'insertMovie']);
+
+Route::get('/movies', [MovieController::class, 'showMovie']);
