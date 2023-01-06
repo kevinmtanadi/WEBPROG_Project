@@ -64,4 +64,39 @@ class ActorController extends Controller
         return redirect('/');
 
     }
+
+    public function editActor($id) {
+        $actor = Actor::where('id', $id)->first();
+
+        return view('edit_actor', ['actor' => $actor]);
+    }
+
+    public function executeEdit(Request $req, $id) {
+        if ($req->hasFile('img_url')) {
+            $actor = Actor::where('id', $id)->first();
+
+            Storage::delete('public/images/'.$actor->image_url);
+
+            $file = $req->file('img_url');
+            $extension = $file->getClientOriginalExtension();
+            $filename = 'movie_'.'.'.time().'.'.$extension;
+
+            Storage::putFileAs('public/images/', $file, $filename);
+            Actor::where('id', $id)->update([
+                'img_url' => $filename
+            ]);
+        }
+
+        Actor::where('id', $id)->update([
+            'name' => $req->name,
+            'gender' => $req->gender,
+            'biography' => $req->biography,
+            'dob' => $req->dob,
+            'pob' => $req->pob,
+            'image_url' => $filename,
+            'popularity' => $req->popularity
+        ]);
+
+        return redirect()->back();
+    }
 }

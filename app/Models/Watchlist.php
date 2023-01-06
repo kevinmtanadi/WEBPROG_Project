@@ -11,6 +11,8 @@ class Watchlist extends Model
 
     protected $table = 'watchlist';
 
+    public $timestamps = false;
+
     public function user() {
         return $this->belongsTo(User::class);
     }

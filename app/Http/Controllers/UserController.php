@@ -88,11 +88,47 @@ class UserController extends Controller
         return view('watchlist', ['watchlists' => $watchlists]);
     }
 
+    public function watchlistStatus(Request $req, $status) {
+        if ($status == 'all') {
+            return view('watchlist', ['watchlists' => Auth::user()->watchlists]);
+        }
+
+        $user_watchlists = Auth::user()->watchlists;
+        $watchlists = [];
+
+        foreach ($user_watchlists as $w) {
+            if (strcasecmp($w->status, $status) == 0) {
+                array_push($watchlists, $w);
+            }
+        }
+        return view('watchlist', ['watchlists' => $watchlists]);
+    }
+
     public function addWatchlist($id) {
         Watchlist::insert([
             'user_id' => Auth::user()->id,
             'movie_id' => $id,
             'status' => 'Planning'
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function changeWatchlistStatus(Request $req, $id) {
+        $status = $req->status;
+
+        if(strcasecmp($status, 'remove') == 0) {
+            Watchlist::where('id', $id)->delete();
+            return redirect()->back();
+        }
+
+        $watchlist = Watchlist::where('id', $id)->first();
+        if(strcasecmp($watchlist->status, $status) == 0) {
+            return redirect()->back();
+        }
+
+        Watchlist::where('id', $id)->update([
+            'status' => $status,
         ]);
 
         return redirect()->back();
