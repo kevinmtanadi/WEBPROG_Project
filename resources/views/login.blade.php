@@ -11,6 +11,9 @@
         <h3 class="my-5">
             Hello, Welcome back to MovieList
         </h3>
+        @if ($errors->any())
+            <strong>{{$errors->first()}}</strong>
+        @endif
         <form action="/logins" method="POST" class="mx-auto login-form">
             @csrf
             <div class="row mx-auto my-3 bg-1 input-box py-2">

@@ -82,7 +82,9 @@ class UserController extends Controller
             return redirect('/');
         }
         else {
-            return redirect('/login');
+            return redirect()->back()->withInput($req->only('email', 'remember'))->withErrors([
+                'approve' => 'Email or password is incorrect'
+            ]);
         }
 
         return redirect('/');
@@ -96,6 +98,18 @@ class UserController extends Controller
 
     public function updateUser(Request $req) {
         $user = Auth::user();
+        $rules = [
+            'username' => 'required',
+            'email' => 'required|email',
+            'dob' => 'required|date',
+            'phone' =>'required|min:5|max:13',
+        ];
+
+        $validator = Validator::make($req->all(), $rules);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator);
+        }
 
         User::where('id', $user->id)->update([
             'username' => $req->username,
@@ -142,11 +156,13 @@ class UserController extends Controller
         foreach ($user_watchlists as $w) {
             $movie = Movie::where('id', $w->movie_id)->first();
             if (stripos($movie->title, $search) !== false) {
-                array_push($watchlists, $w);
+                array_push($watchlists, $w->id);
             }
         }
 
-        return view('watchlist', ['watchlists' => $watchlists]);
+        $watchlist = Watchlist::whereIn('id', $watchlists)->paginate(4);
+
+        return view('watchlist', ['watchlists' => $watchlist]);
     }
 
     public function watchlistStatus(Request $req, $status) {
@@ -162,7 +178,9 @@ class UserController extends Controller
                 array_push($watchlists, $w);
             }
         }
-        return view('watchlist', ['watchlists' => $watchlists]);
+
+        $watchlist = Watchlist::whereIn('id', $watchlists)->paginate(4);
+        return view('watchlist', ['watchlists' => $watchlist]);
     }
 
     public function addWatchlist($id) {
@@ -193,17 +211,5 @@ class UserController extends Controller
         ]);
 
         return redirect()->back();
-    }
-
-    public function addAdmin() {
-        User::insert([
-            'username' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('admin'),
-            'dob' => Carbon::now(),
-            'image_url' => 'profile.webp',
-            'role' => 'admin',
-            'created_at' => Carbon::now(),
-        ]);
     }
 }

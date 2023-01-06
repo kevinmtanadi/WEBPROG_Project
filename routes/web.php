@@ -27,13 +27,12 @@ Route::get('/profile', function() {
 });
 Route::post('/changeProfilePic', [UserController::class, 'updateProfilePic']);
 Route::post('/updateUser', [UserController::class, 'updateUser']);
-Route::get('/addAdmin', [UserController::class, 'addAdmin']);
 
 // ---------------------------------------------------------------- WATCHLIST ----------------------------------------------------------------
-Route::get('/watchlist/status/{status}', [UserController::class, 'watchlistStatus']);
-Route::get('/watchlist', [UserController::class, 'watchlist']);
-Route::get('/addWatchlist/{movie_id}', [UserController::class, 'addWatchlist']);
-Route::get('/changestatus/{id}', [UserController::class, 'changeWatchlistStatus']);
+Route::get('/watchlist/status/{status}', [UserController::class, 'watchlistStatus'])->middleware('loggedin');
+Route::get('/watchlist', [UserController::class, 'watchlist'])->middleware('loggedin');
+Route::get('/addWatchlist/{movie_id}', [UserController::class, 'addWatchlist'])->middleware('loggedin');
+Route::get('/changestatus/{id}', [UserController::class, 'changeWatchlistStatus'])->middleware('loggedin');
 
 // ---------------------------------------------------------------- ACTOR ----------------------------------------------------------------
 Route::get('/addactor', [ActorController::class, 'addActor'])->middleware('security');
