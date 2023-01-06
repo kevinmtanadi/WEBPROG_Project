@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
     @include('layout.head')
-    <title>Add Movie</title>
+    <title>Edit Movie</title>
 </head>
 <body class="d-flex flex-column min-vh-100">
     @include('layout.navbar')
 
     <div class="container my-5">
-        <h3>Add Movie</h3>
+        <h3>Edit Movie</h3>
         @if ($errors->any())
             <strong>{{ $errors->first() }}</strong>
         @endif
-        <form enctype="multipart/form-data" action="/insertmovie" method="POST" class="row w-100">
+        <form enctype="multipart/form-data" action="/executeedit/{{$movie->id}}" method="POST" class="row w-100">
             @csrf
             <div class="my-1">
                 <label for="title" class="mb-1">Title</label>
-                <input type="text" class="form-control input-text w-100 text-white" name="title" id="title">
+                <input type="text" class="form-control input-text w-100 text-white" name="title" id="title" value="{{ $movie->title }}">
             </div>
             <div class="my-1">
                 <label for="description" class="mb-1">Description</label>
-                <textarea name="description" class="form-control bg-1 text-white border-0" id="" cols="30" rows="10" style="transition: none"></textarea>
+                <textarea name="description" class="form-control bg-1 text-white border-0" id="" cols="30" rows="10" style="transition: none" value="{{ $movie->description }}"></textarea>
             </div>
             <div class="my-1">
                 <label for="genre" class="mb-1">Genre</label>
@@ -109,11 +109,11 @@
             </div>
             <div class="my-1">
                 <label for="director" class="mb-1">Director</label>
-                <input type="text" class="form-control input-text w-100 text-white" name="director" id="director">
+                <input type="text" class="form-control input-text w-100 text-white" name="director" id="director" value="{{$movie->director}}">
             </div>
             <div class="my-1">
                 <label for="release_date" class="mb-1">Release Date</label>
-                <input type="date" class="form-control bg-1 text-white border-0" name="release_date" id="release_date">
+                <input type="date" class="form-control bg-1 text-white border-0" name="release_date" id="release_date" value="{{$movie->release_date}}">
             </div>
             <div class="my-1">
                 <label for="img_url" class="mb-1">Image Url</label>
@@ -124,7 +124,7 @@
                 <input type="file" class="form-control input-text w-100 text-white" name="bg_url" id="bg_url">
             </div>
             <div>
-                <input type="submit" value="Create" class="create-btn text-white mt-3 py-1 w-100">
+                <input type="submit" value="Edit" class="create-btn text-white mt-3 py-1 w-100">
             </div>
 
     </div>

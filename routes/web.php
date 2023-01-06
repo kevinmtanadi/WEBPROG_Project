@@ -16,39 +16,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
+// ---------------------------------------------------------------- ACCOUNT ----------------------------------------------------------------
 Route::get('/login', function () {
     return view('login');
 });
-
 Route::get('/register', function () {
     return view('register');
 });
-
 Route::post('/registers', [UserController::class, 'register']);
-
 Route::post('/logins', [UserController::class, 'login']);
-
 Route::get('/logout', [UserController::class, 'logout']);
 
+// ---------------------------------------------------------------- ACTOR ----------------------------------------------------------------
 Route::get('/addactor', [ActorController::class, 'addActor']);
-
 Route::post('/insertactor', [ActorController::class, 'insertActor']);
-
 Route::get('/actor', [ActorController::class, 'showActor']);
+Route::get('/actor/{id}', [ActorController::class, 'specificActor']);
 
+// ---------------------------------------------------------------- MOVIE ----------------------------------------------------------------
 Route::get('/addmovie', [MovieController::class, 'addMovie']);
-
 Route::post('/insertmovie', [MovieController::class, 'insertMovie']);
-
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/', [MovieController::class, 'index']);
-
+Route::get('/{status}', [MovieController::class, 'sortShow']);
 Route::get('/movies/{movie_id}', [MovieController::class, 'showMovie']);
+Route::get('/movies/genre/{id}', [MovieController::class, 'showGenre']);
+Route::get('/editmovie/{id}', [MovieController::class, 'editMovie']);
+Route::post('/executeedit/{id}', [MovieController::class, 'executeEdit']);
 
+// ---------------------------------------------------------------- WATCHLIST ----------------------------------------------------------------
 Route::get('/watchlist', [UserController::class, 'watchlist']);
-
 Route::get('/addWatchlist/{movie_id}', [UserController::class, 'addWatchlist']);

@@ -84,7 +84,7 @@ input.input-text{
 .bg_img {
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    background-position: center top !important;
+    background-position: center 20% !important;
     height: 45vh;
     background-color: #000000;
 }
@@ -93,7 +93,7 @@ input.input-text{
     width: 40%;
     position: relative;
     top: 50%;
-    left: 10%;
+    left: 15%;
 }
 
 a:hover, a:focus{
@@ -120,4 +120,8 @@ a{
 .img-poster {
     width: 230px;
     height: 320px;
+}
+
+p {
+    margin: 0px;
 }

@@ -16,21 +16,24 @@
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
             @foreach ($actors as $a)
-            <div class="col my-2">
-                <div class="card bg-1">
-                    <div class="card-body">
-                    <img class="w-100" width="200px" height="270px" class="my-2" src="{{Storage::url('images/'.$a->image_url)}}" alt="None">
-                        <div class="card-title my-2">
-                            {{ $a->name}}
+            <a href="/actor/{{ $a->id }}">
+                <div class="col my-2">
+                    <div class="card bg-1">
+                        <div class="card-body">
+                        <img class="w-100" width="200px" height="270px" class="my-2" src="{{Storage::url('images/'.$a->image_url)}}" alt="None">
+                            <div class="card-title my-2">
+                                {{ $a->name}}
+                            </div>
+                            @if (count($a->movies) > 0)
+                            <div class="card-text text-color-2">
+                                {{ $a->movies[0]->movie->title}}
+                            </div>
+                            @endif
                         </div>
-                        @if (count($a->movies) > 0)
-                        <div class="card-text text-color-2">
-                            {{ $a->movies[0]->movie->title}}
-                        </div>
-                        @endif
                     </div>
                 </div>
-            </div>
+            </a>
+
         @endforeach
         </div>
 

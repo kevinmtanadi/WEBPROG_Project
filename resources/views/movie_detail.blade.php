@@ -56,6 +56,59 @@
             </div>
         @endforeach
         </div>
+
+        <h4>More</h4>
+        <div class="row">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
+                @foreach ($more_movies as $movie)
+                    <div class="col my-2">
+                        <a href="/movies/{{ $movie->id }}">
+                            <div class="card bg-1">
+                                <img class="card-img-top img-poster img-fluid w-100" class="my-2" src="{{Storage::url('images/movie/thumbnail/'.$movie->image_url)}}" alt="None">
+                                <div class="card-body">
+                                    <div class="card-title my-2">
+                                        {{ \Illuminate\Support\Str::limit($movie->title, 18, $end='...') }}
+                                    </div>
+                                    <div class="card-text text-color-2 d-flex justify-content-between">
+                                        {{ \Illuminate\Support\Str::limit($movie->release_date, 4, $end='') }}
+
+                                        @auth
+                                            @if (Auth::user()->role == 'member')
+                                                @if (count(Auth::user()->watchlists) == 0)
+                                                    <a href="/addWatchlist/{{$movie->id}}">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </a>
+                                                @else
+                                                    @php
+                                                    $exist = False
+                                                    @endphp
+                                                    @foreach (Auth::user()->watchlists as $w)
+                                                        @if ($movie->id == $w->movie_id)
+                                                            {{$exist = True}}
+                                                            @break
+                                                        @else
+                                                            {{$exist = False}}
+                                                        @endif
+                                                    @endforeach
+                                                    @if ($exist)
+                                                        <i class="fa-solid fa-check text-color-1"></i>
+                                                    @else
+                                                        <a href="/addWatchlist/{{$movie->id}}">
+                                                            <i class="fa-solid fa-plus"></i>
+                                                        </a>
+                                                    @endif
+
+                                                @endif
+                                            @endif
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 
     @include('layout.footer')

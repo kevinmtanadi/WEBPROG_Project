@@ -18,6 +18,12 @@ class ActorController extends Controller
         return view('actor', ['actors' => $actors]);
     }
 
+    public function specificActor($id) {
+        $actor = Actor::where('id', $id)->first();
+
+        return view('actor_detail', ['actor' => $actor]);
+    }
+
     public function addActor(Request $req) {
         return view('add_actor');
     }
