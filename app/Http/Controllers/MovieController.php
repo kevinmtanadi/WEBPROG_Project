@@ -52,17 +52,17 @@ class MovieController extends Controller
 
         switch($status) {
             case 'latest':
-                $sorted_movies = Movie::orderBy('release_date', 'asc')->paginate();
+                $sorted_movies = Movie::orderBy('release_date', 'asc')->get();
                 return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $sorted_movies, 'showcased' => $showcased]);
                 break;
 
             case 'sortascend':
-                $sorted_movies = Movie::orderBy('title', 'asc')->paginate();
+                $sorted_movies = Movie::orderBy('title', 'asc')->get();
                 return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $sorted_movies, 'showcased' => $showcased]);
                 break;
 
             case 'sortdescend':
-                $sorted_movies = Movie::orderBy('title', 'desc')->paginate();
+                $sorted_movies = Movie::orderBy('title', 'desc')->get();
                 return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $sorted_movies, 'showcased' => $showcased]);
                 break;
         }

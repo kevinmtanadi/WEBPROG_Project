@@ -76,6 +76,23 @@
                     @endforeach
                 </tbody>
             </table>
+            <div>
+                <div>
+                    Showing {{$watchlists->firstItem()}} to {{$watchlists->lastItem()}} of {{ $watchlists->total() }} results
+                </div>
+                <div>
+                    <a href="{{$watchlists->previousPageUrl()}}">&laquo;</a>
+                    @for ($i = 1; $i <= $watchlists->lastPage(); $i++)
+                        @if($i == $watchlists->currentPage())
+                            <b><a href="{{$watchlists->url($i)}}">{{$i}}</a></b>
+                        @else
+                            <a href="{{$watchlists->url($i)}}">{{$i}}</a>
+                        @endif
+                    @endfor
+                    <a href="{{$watchlists->nextPageUrl()}}">&raquo;</a>
+                </div>
+
+            </div>
         </div>
 
     </div>
