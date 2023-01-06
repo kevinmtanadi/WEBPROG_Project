@@ -17,6 +17,24 @@ class UserController extends Controller
 {
     //
 
+    public function registerPage() {
+        if (!Auth::check()) {
+            return view('register');
+        }
+        else {
+            return redirect('/');
+        }
+    }
+
+    public function loginPage() {
+        if (!Auth::check()) {
+            return view('login');
+        }
+        else {
+            return redirect('/');
+        }
+    }
+
     public function register(Request $req) {
         $rules = [
             'username' => 'required|min:5|unique:users,username',
@@ -62,6 +80,9 @@ class UserController extends Controller
             }
             Session::put('mysession', $credentials);
             return redirect('/');
+        }
+        else {
+            return redirect('/login');
         }
 
         return redirect('/');

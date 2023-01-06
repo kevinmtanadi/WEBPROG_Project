@@ -17,12 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // ---------------------------------------------------------------- ACCOUNT ----------------------------------------------------------------
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/login', [UserController::class, 'loginPage']);
+Route::get('/register', [UserController::class, 'registerPage']);
 Route::post('/registers', [UserController::class, 'register']);
 Route::post('/logins', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
@@ -40,22 +36,22 @@ Route::get('/addWatchlist/{movie_id}', [UserController::class, 'addWatchlist']);
 Route::get('/changestatus/{id}', [UserController::class, 'changeWatchlistStatus']);
 
 // ---------------------------------------------------------------- ACTOR ----------------------------------------------------------------
-Route::get('/addactor', [ActorController::class, 'addActor']);
-Route::post('/insertactor', [ActorController::class, 'insertActor']);
+Route::get('/addactor', [ActorController::class, 'addActor'])->middleware('security');
+Route::post('/insertactor', [ActorController::class, 'insertActor'])->middleware('security');
 Route::get('/actor', [ActorController::class, 'showActor']);
 Route::get('/actor/{id}', [ActorController::class, 'specificActor']);
-Route::get('/editactor/{id}', [ActorController::class, 'editActor']);
-Route::get('/deleteactor/{id}', [ActorController::class, 'deleteActor']);
+Route::get('/editactor/{id}', [ActorController::class, 'editActor'])->middleware('security');
+Route::get('/deleteactor/{id}', [ActorController::class, 'deleteActor'])->middleware('security');
 Route::post('/executeedit/{id}', [ActorController::class, 'executeEdit']);
 
 // ---------------------------------------------------------------- MOVIE ----------------------------------------------------------------
-Route::get('/addmovie', [MovieController::class, 'addMovie']);
-Route::post('/insertmovie', [MovieController::class, 'insertMovie']);
+Route::get('/addmovie', [MovieController::class, 'addMovie'])->middleware('security');
+Route::post('/insertmovie', [MovieController::class, 'insertMovie'])->middleware('security');
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/{status}', [MovieController::class, 'sortShow']);
 Route::get('/movies/{movie_id}', [MovieController::class, 'showMovie']);
 Route::get('/movies/genre/{id}', [MovieController::class, 'showGenre']);
-Route::get('/editmovie/{id}', [MovieController::class, 'editMovie']);
-Route::post('/executeedit/{id}', [MovieController::class, 'executeEdit']);
-Route::get('/deletemovie/{id}', [MovieController::class, 'deleteMovie']);
+Route::get('/editmovie/{id}', [MovieController::class, 'editMovie'])->middleware('security');
+Route::post('/executeedit/{id}', [MovieController::class, 'executeEdit'])->middleware('security');
+Route::get('/deletemovie/{id}', [MovieController::class, 'deleteMovie'])->middleware('security');
 Route::get('/', [MovieController::class, 'index']);
