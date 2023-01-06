@@ -16,14 +16,14 @@
             @csrf
             <div class="my-1">
                 <label for="name" class="mb-1">Name</label>
-                <input type="text" class="form-control input-text w-100 text-white" name="name" id="name">
+                <input type="text" class="form-control input-text w-100 text-white" name="name" id="name" value="{{ $actor->name }}">
             </div>
             <div class="my-1">
                 <label for="gender" class="mb-1">Gender</label>
                 <select name="gender" id="gender" class="form-select bg-1 text-white border-0">
                     <option selected disabled='disabled'>-- Open this select menu --</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="male" {{ strcasecmp($actor->gender, "male") == 0 ? 'selected' : '' }}>Male</option>
+                    <option value="female"{{ strcasecmp($actor->gender, "female") == 0 ? 'selected' : '' }}>Female</option>
                 </select>
             </div>
             <div class="my-1">
@@ -32,11 +32,11 @@
             </div>
             <div class="my-1">
                 <label for="dob" class="mb-1">Date of Birth</label>
-                <input type="date" class="form-control bg-1 text-white border-0" name="dob" id="dob">
+                <input type="date" class="form-control bg-1 text-white border-0" name="dob" id="dob" value="{{$actor->dob}}">
             </div>
             <div class="my-1">
                 <label for="pob" class="mb-1">Place of Birth</label>
-                <input type="text" class="form-control input-text w-100 text-white" name="pob" id="pob">
+                <input type="text" class="form-control input-text w-100 text-white" name="pob" id="pob" value="{{$actor->pob}}">
             </div>
             <div class="my-1">
                 <label for="img_url" class="mb-1">Image Url</label>

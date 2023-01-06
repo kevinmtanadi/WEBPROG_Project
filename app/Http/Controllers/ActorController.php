@@ -99,4 +99,10 @@ class ActorController extends Controller
 
         return redirect()->back();
     }
+
+    public function deleteActor($id) {
+        Actor::where('id', $id)->delete();
+
+        return redirect('/');
+    }
 }

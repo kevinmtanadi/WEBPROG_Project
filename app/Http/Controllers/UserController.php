@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -23,8 +24,6 @@ class UserController extends Controller
             'password' => 'required|alpha_num|min:6|confirmed',
         ];
 
-
-
         $validator = Validator::make($req->all(), $rules);
         if ($validator->fails()) {
             return back()->withErrors($validator);
@@ -35,6 +34,8 @@ class UserController extends Controller
             'email' => $req->email,
             'password' => bcrypt($req->password),
             'created_at' => Carbon::now(),
+            'dob' => Carbon::now(),
+            'image_url' => 'profile.webp',
         ]);
 
         $credentials = [
@@ -68,6 +69,45 @@ class UserController extends Controller
 
     public function logout() {
         Auth::logout();
+
+        return redirect()->back();
+    }
+
+    public function updateUser(Request $req) {
+        $user = Auth::user();
+
+        User::where('id', $user->id)->update([
+            'username' => $req->username,
+            'email' => $req->email,
+            'dob' => $req->dob,
+            'phone' => $req->phone,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function updateProfilePic(Request $req) {
+        $user = Auth::user();
+
+        $file = $req->file('image_url');
+
+        $extension = $file->getClientOriginalExtension();
+        $filename = $user->username.'.'.time().'.'.$extension;
+
+
+        if($user->image_url != 'profile.webp')
+        {
+            Storage::delete('public/images/'.$user->image_url);
+        }
+
+        Storage::putFileAs('public/images/', $file, $filename);
+        User::where('id', $user->id)->update([
+            'image_url' => $filename,
+        ]);
+
+        User::where('id', )->update([
+            'image_url' => $req->image_url
+        ]);
 
         return redirect()->back();
     }
@@ -132,5 +172,17 @@ class UserController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function addAdmin() {
+        User::insert([
+            'username' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => bcrypt('admin'),
+            'dob' => Carbon::now(),
+            'image_url' => 'profile.webp',
+            'role' => 'admin',
+            'created_at' => Carbon::now(),
+        ]);
     }
 }

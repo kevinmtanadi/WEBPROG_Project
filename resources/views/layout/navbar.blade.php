@@ -20,7 +20,11 @@
                 <li class="nav-item mx-2 my-auto">
                     <div class="dropdown">
                         <button class="profile d-block m-auto" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-user"></i>
+                            @if (Auth::user()->image_url == '')
+                                <img class="profile" src="{{Storage::url('public/images/profile.webp')}}" alt="">
+                            @else
+                                <img class="profile" src="{{Storage::url('public/images/'.Auth::user()->image_url)}}" alt="Profile Pic">
+                            @endif
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                           <li><a class="dropdown-item" href="/profile">Profile</a></li>

@@ -127,6 +127,9 @@
                 <input type="submit" value="Create" class="create-btn text-white mt-3 py-1 w-100">
             </div>
 
+
+
+        </form>
     </div>
 
     @include('layout.footer')

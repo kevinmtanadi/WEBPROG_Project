@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder
         User::insert([
             'username' => 'admin',
             'email' => 'admin@example.com',
-            'password' => 'admin',
+            'password' => bcrypt('admin'),
+            'dob' => Carbon::now(),
+            'image_url' => 'profile.webp',
             'role' => 'admin',
             'created_at' => Carbon::now(),
         ]);

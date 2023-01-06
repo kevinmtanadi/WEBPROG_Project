@@ -14,7 +14,19 @@
                     <img class="img-fluid" style="height: 40vh" src="{{Storage::url('images/movie/thumbnail/'.$movie->image_url)}}" alt="none">
                 </div>
                 <div class="col-8">
-                    <h2 class="mt-3 fw-bold">{{$movie->title}}</h2>
+                    <div class="d-flex">
+                        <h2 class="mt-3 fw-bold">{{$movie->title}}</h2>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                            <div class="mx-5 align-self-center">
+                                <a href="/editmovie/{{$movie->id}}"><i class="fa-regular fa-pen-to-square fs-4 mx-2"></i></a>
+                                <a href="/deletemovie/{{$movie->id}}"><i class="fa-solid fa-trash fs-4 mx-2"></i></a>
+                            </div>
+
+                            @endif
+                        @endif
+                    </div>
+
                     <div class="genre my-3">
                         @foreach($movie->movieGenres as $genre)
                             <a href="" class="btn btn-outline-light me-1">{{$genre->genre->name}}</a>

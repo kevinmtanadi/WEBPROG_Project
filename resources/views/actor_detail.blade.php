@@ -10,7 +10,11 @@
     <div class="container my-3">
         <div class="row">
             <div class="col-3">
-                <img class="w-100" class="my-2" src="{{Storage::url('images/'.$actor->image_url)}}" alt="None">
+                <div class="position-relative">
+                    <img class="w-100" class="my-2" src="{{Storage::url('images/'.$actor->image_url)}}" alt="None">
+                    <a class="flying-btn-1" href="/editactor/{{ $actor->id }}"><i class="fa-regular fa-pen-to-square fs-6 my-auto mx-2"></i></a>
+                    <a class="flying-btn-2" href="/deleteactor/{{ $actor->id }}"><i class="fa-solid fa-trash fs-6 my-auto mx-2"></i></a>
+                </div>
                 <div class="mt-2">
                     <h4>Personal Info</h4>
                     <div class="my-2">

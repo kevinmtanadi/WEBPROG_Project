@@ -7,6 +7,7 @@
 <body class="d-flex flex-column min-vh-100">
     @include('layout.navbar')
 
+    @if($showcased != null)
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -24,6 +25,39 @@
                                 <h3 class="fw-bold">{{ $showcased[0]->title}}</h3>
                             </div>
                             <p>{{ $showcased[0]->description }}</p>
+                            @auth
+                                @if (Auth::user()->role == 'member')
+                                    @if (count(Auth::user()->watchlists) == 0)
+                                    <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[0]->id}}">
+                                            <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                        </a>
+                                    @else
+                                        @php
+                                        $exist = False
+                                        @endphp
+                                        @foreach (Auth::user()->watchlists as $w)
+                                            @if ($showcased[0]->id == $w->movie_id)
+                                                @php
+                                                $exist = True
+                                                @endphp
+                                                @break
+                                            @else
+                                                @php
+                                                $exist = False
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        @if ($exist)
+                                            <i class="fa-solid fa-check text-color-1"></i> Already in Watchlist
+                                        @else
+                                            <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[0]->id}}">
+                                                <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                            </a>
+                                        @endif
+
+                                    @endif
+                                @endif
+                            @endif
                         </div>
 
                     </div>
@@ -39,6 +73,39 @@
                                 <h3 class="fw-bold">{{ $showcased[1]->title}}</h3>
                             </div>
                             <p>{{ $showcased[1]->description }}</p>
+                            @auth
+                                @if (Auth::user()->role == 'member')
+                                    @if (count(Auth::user()->watchlists) == 0)
+                                    <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[1]->id}}">
+                                            <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                        </a>
+                                    @else
+                                        @php
+                                        $exist = False
+                                        @endphp
+                                        @foreach (Auth::user()->watchlists as $w)
+                                            @if ($showcased[1]->id == $w->movie_id)
+                                                @php
+                                                $exist = True
+                                                @endphp
+                                                @break
+                                            @else
+                                                @php
+                                                $exist = False
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        @if ($exist)
+                                            <i class="fa-solid fa-check text-color-1"></i> Already in Watchlist
+                                        @else
+                                            <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[1]->id}}">
+                                                <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                            </a>
+                                        @endif
+
+                                    @endif
+                                @endif
+                            @endif
                         </div>
 
                     </div>
@@ -54,6 +121,40 @@
                                 <h3 class="fw-bold">{{ $showcased[2]->title}}</h3>
                             </div>
                             <p>{{ $showcased[2]->description }}</p>
+                            @auth
+                                @if (Auth::user()->role == 'member')
+                                    @if (count(Auth::user()->watchlists) == 0)
+                                    <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[2]->id}}">
+                                            <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                        </a>
+                                    @else
+                                        @php
+                                        $exist = False
+                                        @endphp
+                                        @foreach (Auth::user()->watchlists as $w)
+                                            @if ($showcased[2]->id == $w->movie_id)
+                                                @php
+                                                $exist = True
+                                                @endphp
+                                                @break
+                                            @else
+                                                @php
+                                                $exist = False
+                                                @endphp
+                                            @endif
+                                        @endforeach
+                                        @if ($exist)
+                                            <i class="fa-solid fa-check text-color-1"></i> Already in Watchlist
+                                        @else
+                                            <a class="btn btn-danger my-2" href="/addWatchlist/{{$showcased[2]->id}}">
+                                                <i class="fa-solid fa-plus"></i> Add to Watchlist
+                                            </a>
+                                        @endif
+
+                                    @endif
+                                @endif
+                            @endif
+
                         </div>
 
                     </div>
@@ -69,12 +170,14 @@
           </div>
         </div>
     </div>
+    @endif
 
     <div class="container my-3">
         <h4 class="mb-3">Popular</h4>
         <hr>
         <div class="row">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
+                @if ($movies != null)
                 @foreach ($movies as $movie)
                     <div class="col my-2">
                         <a href="/movies/{{ $movie->id }}">
@@ -86,7 +189,6 @@
                                     </div>
                                     <div class="card-text text-color-2 d-flex justify-content-between">
                                         {{ \Illuminate\Support\Str::limit($movie->release_date, 4, $end='') }}
-
                                         @auth
                                             @if (Auth::user()->role == 'member')
                                                 @if (count(Auth::user()->watchlists) == 0)
@@ -99,10 +201,14 @@
                                                     @endphp
                                                     @foreach (Auth::user()->watchlists as $w)
                                                         @if ($movie->id == $w->movie_id)
-                                                            {{$exist = True}}
+                                                            @php
+                                                            $exist = True
+                                                            @endphp
                                                             @break
                                                         @else
-                                                            {{$exist = False}}
+                                                        @php
+                                                        $exist = False
+                                                        @endphp
                                                         @endif
                                                     @endforeach
                                                     @if ($exist)
@@ -122,6 +228,7 @@
                         </a>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 
@@ -132,7 +239,7 @@
         <hr>
         <div class="row my-3">
         @foreach ($genres as $genre)
-            <a href="movies/genre/{{$genre->id}}" class="btn btn-secondary bg-1 col-1">{{ $genre->name }}</a>
+            <a href="/movies/genre/{{$genre->id}}" class="btn btn-secondary bg-1 col-1">{{ $genre->name }}</a>
         @endforeach
         </div>
         <div class="d-flex align-items-center">
@@ -141,8 +248,16 @@
             <a href="/sortascend" class="btn btn-secondary bg-1 mx-2">A-Z</a>
             <a href="/sortdescend" class="btn btn-secondary bg-1 mx-2">Z-A</a>
         </div>
+        @auth
+        @if (Auth::user()->role == 'admin')
+        <div class="d-flex justify-content-end">
+            <a href="/addmovie" class="btn btn-danger"><i class="fa-solid fa-plus"></i> Add Movie</a>
+        </div>
+        @endif
+        @endif
         <div class="row">
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
+                @if($sorted_movies != null)
                 @foreach ($sorted_movies as $movie)
                     <div class="col">
                         <a href="/movies/{{ $movie->id }}">
@@ -190,6 +305,7 @@
                         </a>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
 

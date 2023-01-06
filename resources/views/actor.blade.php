@@ -11,7 +11,15 @@
     <div class="container my-3">
         <form action="/actor" class="d-flex justify-content-between">
             <h3>Actors</h3>
-            <input class="input-text b-radius px-3" type="text" name="search" id="search" placeholder="Search Actor">
+            <div class="d-flex">
+                <input class="input-text b-radius px-3" type="text" name="search" id="search" placeholder="Search Actor">
+                @auth
+                    @if (Auth::user()->role == 'admin')
+                        <a href="/addactor" class="btn btn-danger ms-2">Add Actor</a>
+                    @endif
+                @endif
+            </div>
+
         </form>
 
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">

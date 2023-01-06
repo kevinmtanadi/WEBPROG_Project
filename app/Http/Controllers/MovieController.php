@@ -26,9 +26,13 @@ class MovieController extends Controller
         $genres = Genre::all();
 
         $search = $req->search;
+
         $searched = Movie::where('title', 'LIKE', "%$search%")->get();
 
-        $showcased = Movie::all()->random(3);
+        $showcased = null;
+        if (count($movies) >= 3) {
+            $showcased = Movie::all()->random(3);
+        }
 
         foreach ($movies as $m) {
 
@@ -77,6 +81,24 @@ class MovieController extends Controller
         }
 
 
+    }
+
+    public function showGenre($genre_id) {
+        $movies = Movie::all();
+        $genres = Genre::all();
+        $showcased = Movie::all()->random(3);
+
+        $movieGenre = MovieGenre::where('genre_id', $genre_id)->get();
+        if (count($movieGenre) < 1) {
+            return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => null, 'showcased' => $showcased]);
+        }
+        $genreMovies = [];
+
+        foreach ($movieGenre as $mg) {
+            $movie = Movie::where('id', $mg->movie_id)->first();
+            array_push($genreMovies, $movie);
+        }
+        return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $genreMovies, 'showcased' => $showcased]);
     }
 
     public function addMovie(Request $req) {
@@ -244,6 +266,14 @@ class MovieController extends Controller
                 'genre_id' => $val
             ]);
         }
+
+        return redirect('/');
+    }
+
+    public function deleteMovie($id) {
+        MovieActor::where('movie_id', $id)->delete();
+        MovieGenre::where('genre_id', )->delete();
+        Movie::where('id', $id)->delete();
 
         return redirect('/');
     }

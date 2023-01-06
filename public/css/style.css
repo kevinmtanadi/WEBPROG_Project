@@ -14,15 +14,15 @@ a {
 }
 
 .bg-1 {
-    background-color: #1f1f1f;
+    background-color: #1f1f1f !important;
 }
 
 .bg-2 {
-    background-color: #464646;
+    background-color: #464646 !important;
 }
 
 .bg-3 {
-    background-color: #111117;
+    background-color: #111117 !important;
 }
 
 .text-color-1{
@@ -109,12 +109,24 @@ a{
     color: white;
 }
 
-.profile {
+button.profile {
+    border: none;
+    background-color: transparent;
+    border-radius: 50%;
+}
+
+img.profile {
     width: 25px;
     height: 25px;
     background-color: #757575;
     border-radius: 50%;
     border: none;
+}
+
+.profile-big {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
 }
 
 .bg-none {
@@ -128,4 +140,24 @@ a{
 
 p {
     margin: 0px;
+}
+
+.flying-btn-1 {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    background-color: #e93b43;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.flying-btn-2 {
+    position: absolute;
+    top: 40px;
+    right: 16px;
+    background-color: #e93b43;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
 }
