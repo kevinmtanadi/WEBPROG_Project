@@ -18,8 +18,9 @@ class MovieController extends Controller
 
     public function index(Request $req) {
         $movies = Movie::all();
+        $genres = Genre::all();
 
-        return view('movie', ['movies' => $movies]);
+        return view('movie', ['movies' => $movies, 'genres' => $genres]);
     }
 
     public function showMovie($movie_id) {
@@ -36,7 +37,7 @@ class MovieController extends Controller
     }
 
     public function insertMovie(Request $req) {
-        $rules = [
+        $valid = $req->validate([
             'title' => 'required|min:2|max:50',
             'description' => 'required|min:8',
             'director' => 'required|min:3',
@@ -45,11 +46,11 @@ class MovieController extends Controller
             'release_date' => 'required',
             'image_url' => 'required|file|mimes:jpeg,jpg,png,gif',
             'bg_url' => 'required|file|mimes:jpeg,jpg,png,gif',
-        ];
+        ]);
 
         $new_req = array_filter($req->all());
 
-        $image = $req->file('img_url');
+        $image = $req->file('image_url');
         $extension = $image->getClientOriginalExtension();
         $image_filename = 'movie_'.'.'.time().'.'.$extension;
 

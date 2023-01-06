@@ -10,4 +10,6 @@
     crossorigin="anonymous"
 />
 
+<script src="https://kit.fontawesome.com/69175013e3.js" crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="{{ asset('css/style.css')}}">

@@ -17,12 +17,20 @@ a {
     background-color: #1f1f1f;
 }
 
+.bg-2 {
+    background-color: #464646;
+}
+
 .text-color-1{
     color: #e93b43;
 }
 
 .text-color-2 {
     color: #636363;
+}
+
+.text-color-3 {
+    color: #a6a6a9;
 }
 
 
@@ -95,4 +103,21 @@ a:hover, a:focus{
 
 a{
     color: white;
+}
+
+.profile {
+    width: 25px;
+    height: 25px;
+    background-color: #757575;
+    border-radius: 50%;
+    border: none;
+}
+
+.bg-none {
+    background-color: transparent;
+}
+
+.img-poster {
+    width: 230px;
+    height: 320px;
 }

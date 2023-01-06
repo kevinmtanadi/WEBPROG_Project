@@ -33,7 +33,7 @@
             </div>
             <div class="my-1">
                 <p class="mb-3">Actors</p>
-                <div class="wrapper mx-3" id="actors-list">
+                <div class="mx-3" id="actors-list">
                     <div id="actors-wrapper-1">
                         <div class="row d-flex">
                             <div class="col">
@@ -106,7 +106,6 @@
                         <input type="button" value="Add more" class="btn btn-primary" onclick="addActor();">
                     </div>
                 </div>
-
             </div>
             <div class="my-1">
                 <label for="director" class="mb-1">Director</label>
@@ -118,7 +117,7 @@
             </div>
             <div class="my-1">
                 <label for="img_url" class="mb-1">Image Url</label>
-                <input type="file" class="form-control input-text w-100 text-white" name="img_url" id="img_url">
+                <input type="file" class="form-control input-text w-100 text-white" name="image_url" id="image_url">
             </div>
             <div class="my-1">
                 <label for="bg_url" class="mb-1">Background Url</label>

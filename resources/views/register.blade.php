@@ -11,7 +11,8 @@
         <h3 class="my-5">
             Hello, Welcome back to MovieList
         </h3>
-        <form action="" class="mx-auto login-form">
+        <form method="POST" action="/registers" class="mx-auto login-form">
+            @csrf
             <div class="row mx-auto my-3 bg-1 input-box py-2">
                 <label for="username" class="col-4 d-flex align-items-center">
                         Username
@@ -37,11 +38,11 @@
                 </div>
             </div>
             <div class="row mx-auto my-3 bg-1 input-box py-2">
-                <label for="confirm_password" class="col-4 d-flex align-items-center">
+                <label for="password_confirmation" class="col-4 d-flex align-items-center">
                         Confirm Password
                 </label>
                 <div class="col-8">
-                    <input class="input-text w-100" type="confirm_password" name="confirm_password" id="confirm_password" placeholder="Enter your confirm password">
+                    <input class="input-text w-100" type="password" name="password_confirmation" id="password_confirmation" placeholder="Enter your confirm password">
                 </div>
             </div>
             <input type="submit" value="Register &#10140;" class="login-btn py-2 my-2 text-white">

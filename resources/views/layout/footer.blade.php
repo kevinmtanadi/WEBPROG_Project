@@ -2,7 +2,7 @@
 <section class="mt-auto">
     <footer class="p-2 text-white text-center position-relative bg-1">
         <div class="mt-2">
-            <a href="/"><h1>MovieList</h1></a>
+            <a href="/" class="h1">MovieList</a>
         </div>
 
         <div class="mt-1">

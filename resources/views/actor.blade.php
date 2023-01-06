@@ -23,9 +23,11 @@
                         <div class="card-title my-2">
                             {{ $a->name}}
                         </div>
+                        @if (count($a->movies) > 0)
                         <div class="card-text text-color-2">
                             {{ $a->movies[0]->movie->title}}
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
