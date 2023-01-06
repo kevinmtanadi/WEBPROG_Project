@@ -259,7 +259,7 @@
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-4">
                 @if($sorted_movies != null)
                 @foreach ($sorted_movies as $movie)
-                    <div class="col">
+                    <div class="col my-2">
                         <a href="/movies/{{ $movie->id }}">
                             <div class="card bg-1">
                                 <img class="card-img-top img-poster" class="my-2" src="{{Storage::url('images/movie/thumbnail/'.$movie->image_url)}}" alt="None">

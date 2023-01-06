@@ -27,7 +27,7 @@ class MovieController extends Controller
 
         $search = $req->search;
 
-        $searched = Movie::where('title', 'LIKE', "%$search%")->get();
+        $searched = Movie::where('title', 'LIKE', "%$search%");
 
         $showcased = null;
         if (count($movies) >= 3) {
@@ -35,12 +35,18 @@ class MovieController extends Controller
         }
 
         foreach ($movies as $m) {
-
             $watchlist = Watchlist::where('movie_id', $m->id)->get();
             $m->count = count($watchlist);
         }
 
         $movies = $movies->sortByDesc('count');
+
+        $m_id = [];
+        foreach ($movies as $m) {
+            array_push($m_id, $m->id);
+        }
+
+        $movies = Movie::whereIn('id', $m_id)->paginate(5);
 
         return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $searched, 'showcased' => $showcased]);
     }
@@ -50,9 +56,23 @@ class MovieController extends Controller
         $genres = Genre::all();
         $showcased = Movie::all()->random(3);
 
+        foreach ($movies as $m) {
+            $watchlist = Watchlist::where('movie_id', $m->id)->get();
+            $m->count = count($watchlist);
+        }
+
+        $movies = $movies->sortByDesc('count');
+
+        $m_id = [];
+        foreach ($movies as $m) {
+            array_push($m_id, $m->id);
+        }
+
+        $movies = Movie::whereIn('id', $m_id)->paginate(5);
+
         switch($status) {
             case 'latest':
-                $sorted_movies = Movie::orderBy('release_date', 'asc')->get();
+                $sorted_movies = Movie::orderBy('release_date', 'desc')->get();
                 return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $sorted_movies, 'showcased' => $showcased]);
                 break;
 
@@ -72,11 +92,11 @@ class MovieController extends Controller
         $movie = Movie::where('id', $movie_id)->first();
         $movies = Movie::all();
         if ($movies->count() > 5) {
-            $more_movies = Movie::where('id', '<>', $movie_id)->random(5);
+            $more_movies = Movie::all()->random(5);
             return view('movie_detail', ['movie' => $movie, 'more_movies' => $more_movies]);
         }
         else {
-            $more_movies = Movie::where('id', '<>', $movie_id)->get();
+            $more_movies = Movie::all();
             return view('movie_detail', ['movie' => $movie, 'more_movies' => $more_movies]);
         }
 
@@ -87,6 +107,21 @@ class MovieController extends Controller
         $movies = Movie::all();
         $genres = Genre::all();
         $showcased = Movie::all()->random(3);
+
+        foreach ($movies as $m) {
+            $watchlist = Watchlist::where('movie_id', $m->id)->get();
+            $m->count = count($watchlist);
+        }
+
+        $movies = $movies->sortByDesc('count');
+
+        $m_id = [];
+        foreach ($movies as $m) {
+            array_push($m_id, $m->id);
+        }
+
+        $movies = Movie::whereIn('id', $m_id)->paginate(5);
+
 
         $movieGenre = MovieGenre::where('genre_id', $genre_id)->get();
         if (count($movieGenre) < 1) {
