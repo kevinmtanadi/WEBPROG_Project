@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Validator;
 class MovieController extends Controller
 {
     //
-    function sortByCount($a, $b) {
-        if($a->count == $b->count){ return 0 ; }
-        return ($a->count < $b->count) ? -1 : 1;
-    }
 
     public function index(Request $req) {
         $movies = Movie::all();
@@ -27,7 +23,7 @@ class MovieController extends Controller
 
         $search = $req->search;
 
-        $searched = Movie::where('title', 'LIKE', "%$search%");
+        $searched = Movie::where('title', 'LIKE', "%$search%")->get();
 
         $showcased = null;
         if (count($movies) >= 3) {
@@ -47,6 +43,7 @@ class MovieController extends Controller
         }
 
         $movies = Movie::whereIn('id', $m_id)->paginate(5);
+
 
         return view('movie', ['movies' => $movies, 'genres' => $genres, 'sorted_movies' => $searched, 'showcased' => $showcased]);
     }

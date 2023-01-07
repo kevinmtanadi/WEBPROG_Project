@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2023 at 04:19 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jan 07, 2023 at 05:54 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actor` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `biography` varchar(10000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL,
+  `biography` varchar(10000) NOT NULL,
   `dob` date NOT NULL,
-  `pob` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pob` varchar(255) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
   `popularity` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -50,7 +50,9 @@ INSERT INTO `actor` (`id`, `name`, `gender`, `biography`, `dob`, `pob`, `image_u
 (5, 'Woody Harrelson', 'male', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae dignissimos sed totam ipsum asperiores molestias saepe commodi maiores corporis, officiis eius atque, numquam dolor nobis. Sint quasi minus rem sapiente non nihil illum nemo, neque eveniet eligendi nobis aliquam repellendus hic ipsum enim at facilis tempore asperiores laudantium soluta numquam. Eius quos eum excepturi tempore? Saepe iste fuga molestias qui voluptatum quibusdam at explicabo voluptas consequatur rerum! Quia iusto sed distinctio, vero voluptas, eos excepturi, sit maxime aspernatur rerum voluptatem? Quod accusamus minus ad voluptatem repellendus nulla animi autem esse cupiditate ipsam consectetur nostrum iusto impedit accusantium quae facere, quo possimus. Ea corporis, atque, blanditiis amet sunt molestias dolores ex a, expedita est quaerat nulla. Id praesentium quia aut vel earum consectetur voluptate dolores a corporis, ipsa optio beatae sint nostrum magnam cumque natus doloribus ducimus! Qui, distinctio tempore! Repellendus corporis explicabo itaque magnam. Velit qui est voluptates accusantium.', '2022-11-24', 'London, England', '1673011783.jpg', 125),
 (6, 'Keanu Reeves', 'male', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut molestiae dignissimos sed totam ipsum asperiores molestias saepe commodi maiores corporis, officiis eius atque, numquam dolor nobis. Sint quasi minus rem sapiente non nihil illum nemo, neque eveniet eligendi nobis aliquam repellendus hic ipsum enim at facilis tempore asperiores laudantium soluta numquam. Eius quos eum excepturi tempore? Saepe iste fuga molestias qui voluptatum quibusdam at explicabo voluptas consequatur rerum! Quia iusto sed distinctio, vero voluptas, eos excepturi, sit maxime aspernatur rerum voluptatem? Quod accusamus minus ad voluptatem repellendus nulla animi autem esse cupiditate ipsam consectetur nostrum iusto impedit accusantium quae facere, quo possimus. Ea corporis, atque, blanditiis amet sunt molestias dolores ex a, expedita est quaerat nulla. Id praesentium quia aut vel earum consectetur voluptate dolores a corporis, ipsa optio beatae sint nostrum magnam cumque natus doloribus ducimus! Qui, distinctio tempore! Repellendus corporis explicabo itaque magnam. Velit qui est voluptates accusantium.', '2022-10-14', 'London, England', '1673011804.jpg', 135),
 (8, 'Emma Stone', 'female', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ducimus molestiae voluptas amet fugiat consequatur, accusamus ad soluta placeat ut libero ipsam dignissimos accusantium consequuntur quibusdam, enim officiis blanditiis, atque ab nulla laboriosam qui tempore inventore. Ea reiciendis maxime id culpa molestias dolorem cumque harum, dignissimos ut nam aspernatur animi cum facere blanditiis illum sint fuga esse, fugiat, laborum iste explicabo! Nesciunt sunt placeat, praesentium eveniet laboriosam eligendi voluptatibus in amet inventore consequatur cum dolore reiciendis officia voluptates quos quod rem beatae nemo omnis labore fuga nam earum eaque aspernatur. Maxime repellendus eius quod dolores alias accusamus praesentium, porro obcaecati quae blanditiis, eum optio voluptas animi fugiat ea temporibus ab cumque sapiente esse suscipit laboriosam! Adipisci nulla hic quasi dicta vel iure sunt atque fugit iste voluptas possimus maxime reprehenderit distinctio aliquid quisquam tempore repellendus, corrupti porro autem reiciendis corporis? Quisquam, nisi id. Ex obcaecati aspernatur asperiores nihil tempore sit quo veniam, recusandae porro. Earum nam ut ea assumenda blanditiis omnis quo architecto fugiat fugit repudiandae facilis voluptatem autem laboriosam illo alias, odit quibusdam? Distinctio harum facere aspernatur dolorum deserunt accusamus non ab obcaecati quisquam! Exercitationem beatae aliquid, architecto sunt doloremque sint rem maiores similique iusto, expedita nisi. Enim, sapiente.', '2022-11-14', 'Arizona, US', '1673017859.jpg', 135),
-(9, 'Jesse Eisenberg', 'male', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ducimus molestiae voluptas amet fugiat consequatur, accusamus ad soluta placeat ut libero ipsam dignissimos accusantium consequuntur quibusdam, enim officiis blanditiis, atque ab nulla laboriosam qui tempore inventore. Ea reiciendis maxime id culpa molestias dolorem cumque harum, dignissimos ut nam aspernatur animi cum facere blanditiis illum sint fuga esse, fugiat, laborum iste explicabo! Nesciunt sunt placeat, praesentium eveniet laboriosam eligendi voluptatibus in amet inventore consequatur cum dolore reiciendis officia voluptates quos quod rem beatae nemo omnis labore fuga nam earum eaque aspernatur. Maxime repellendus eius quod dolores alias accusamus praesentium, porro obcaecati quae blanditiis, eum optio voluptas animi fugiat ea temporibus ab cumque sapiente esse suscipit laboriosam! Adipisci nulla hic quasi dicta vel iure sunt atque fugit iste voluptas possimus maxime reprehenderit distinctio aliquid quisquam tempore repellendus, corrupti porro autem reiciendis corporis? Quisquam, nisi id. Ex obcaecati aspernatur asperiores nihil tempore sit quo veniam, recusandae porro. Earum nam ut ea assumenda blanditiis omnis quo architecto fugiat fugit repudiandae facilis voluptatem autem laboriosam illo alias, odit quibusdam? Distinctio harum facere aspernatur dolorum deserunt accusamus non ab obcaecati quisquam! Exercitationem beatae aliquid, architecto sunt doloremque sint rem maiores similique iusto, expedita nisi. Enim, sapiente.', '2022-11-15', 'New York, US', '1673017917.jpg', 107);
+(9, 'Jesse Eisenberg', 'male', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ducimus molestiae voluptas amet fugiat consequatur, accusamus ad soluta placeat ut libero ipsam dignissimos accusantium consequuntur quibusdam, enim officiis blanditiis, atque ab nulla laboriosam qui tempore inventore. Ea reiciendis maxime id culpa molestias dolorem cumque harum, dignissimos ut nam aspernatur animi cum facere blanditiis illum sint fuga esse, fugiat, laborum iste explicabo! Nesciunt sunt placeat, praesentium eveniet laboriosam eligendi voluptatibus in amet inventore consequatur cum dolore reiciendis officia voluptates quos quod rem beatae nemo omnis labore fuga nam earum eaque aspernatur. Maxime repellendus eius quod dolores alias accusamus praesentium, porro obcaecati quae blanditiis, eum optio voluptas animi fugiat ea temporibus ab cumque sapiente esse suscipit laboriosam! Adipisci nulla hic quasi dicta vel iure sunt atque fugit iste voluptas possimus maxime reprehenderit distinctio aliquid quisquam tempore repellendus, corrupti porro autem reiciendis corporis? Quisquam, nisi id. Ex obcaecati aspernatur asperiores nihil tempore sit quo veniam, recusandae porro. Earum nam ut ea assumenda blanditiis omnis quo architecto fugiat fugit repudiandae facilis voluptatem autem laboriosam illo alias, odit quibusdam? Distinctio harum facere aspernatur dolorum deserunt accusamus non ab obcaecati quisquam! Exercitationem beatae aliquid, architecto sunt doloremque sint rem maiores similique iusto, expedita nisi. Enim, sapiente.', '2022-11-15', 'New York, US', '1673017917.jpg', 107),
+(10, 'Elizabeth Olsen', 'female', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore eius at dolor iure quaerat mollitia accusantium quam incidunt quod nesciunt est quasi nostrum quibusdam delectus alias sed sapiente, dolores molestias. Eum recusandae corporis reprehenderit, animi quia voluptatibus. Eveniet necessitatibus consequatur quis, laudantium illo iure voluptatibus in voluptatem quo dolore amet minima et ullam culpa, dolorem quisquam obcaecati maxime molestias praesentium tenetur totam non nobis. Eveniet quos saepe, quaerat molestias quis sint porro explicabo, aperiam dolore iste veritatis atque repellendus ea inventore perspiciatis, corporis excepturi quidem consectetur cupiditate! Dolore dignissimos, voluptas accusantium deleniti harum repellendus laborum repudiandae ut adipisci perferendis a distinctio facere inventore, nisi cum temporibus ipsa iure eum officiis aut pariatur accusamus iusto! Quos atque, dicta quae eaque quod rerum officiis iure nisi nemo est aperiam ipsam fuga quia, recusandae tenetur? Obcaecati rem accusantium quae voluptatem quasi nisi sequi veniam, illum totam cupiditate hic incidunt impedit eum molestias quidem pariatur. Eaque nulla tempore ullam neque error harum aliquid ratione a mollitia ad sit ipsa consequuntur vitae, in itaque maxime, dicta laborum veniam, rem ex assumenda ea. Enim cum fugiat facilis! Nam amet error dolor, repellat, adipisci officiis, rerum tempore enim autem debitis modi pariatur doloremque deserunt repellendus quaerat sint!', '2022-10-11', 'California, US', '1673067204.jpg', 135),
+(11, 'Xochitl Gomez', 'female', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore eius at dolor iure quaerat mollitia accusantium quam incidunt quod nesciunt est quasi nostrum quibusdam delectus alias sed sapiente, dolores molestias. Eum recusandae corporis reprehenderit, animi quia voluptatibus. Eveniet necessitatibus consequatur quis, laudantium illo iure voluptatibus in voluptatem quo dolore amet minima et ullam culpa, dolorem quisquam obcaecati maxime molestias praesentium tenetur totam non nobis. Eveniet quos saepe, quaerat molestias quis sint porro explicabo, aperiam dolore iste veritatis atque repellendus ea inventore perspiciatis, corporis excepturi quidem consectetur cupiditate! Dolore dignissimos, voluptas accusantium deleniti harum repellendus laborum repudiandae ut adipisci perferendis a distinctio facere inventore, nisi cum temporibus ipsa iure eum officiis aut pariatur accusamus iusto! Quos atque, dicta quae eaque quod rerum officiis iure nisi nemo est aperiam ipsam fuga quia, recusandae tenetur? Obcaecati rem accusantium quae voluptatem quasi nisi sequi veniam, illum totam cupiditate hic incidunt impedit eum molestias quidem pariatur. Eaque nulla tempore ullam neque error harum aliquid ratione a mollitia ad sit ipsa consequuntur vitae, in itaque maxime, dicta laborum veniam, rem ex assumenda ea. Enim cum fugiat facilis! Nam amet error dolor, repellat, adipisci officiis, rerum tempore enim autem debitis modi pariatur doloremque deserunt repellendus quaerat sint!', '2022-11-15', 'California, US', '1673067224.jpg', 45);
 
 -- --------------------------------------------------------
 
@@ -60,11 +62,11 @@ INSERT INTO `actor` (`id`, `name`, `gender`, `biography`, `dob`, `pob`, `image_u
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -76,7 +78,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `genre` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -105,7 +107,7 @@ INSERT INTO `genre` (`id`, `name`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -133,12 +135,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `movie` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `director` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `director` varchar(255) NOT NULL,
   `release_date` date NOT NULL,
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bg_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `image_url` varchar(255) NOT NULL,
+  `bg_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -150,7 +152,8 @@ INSERT INTO `movie` (`id`, `title`, `description`, `director`, `release_date`, `
 (2, 'Venom Let There Be Carnage', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi officia quibusdam reiciendis omnis hic, facere est a blanditiis ad vero deserunt magnam voluptate nulla consectetur tenetur adipisci nesciunt pariatur maxime.', 'Andy Serkis', '2022-09-06', 'movie_.1673011873.jpg', 'bg_.1673011873.jpg'),
 (5, 'The Matrix Ressurections', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi officia quibusdam reiciendis omnis hic, facere est a blanditiis ad vero deserunt magnam voluptate nulla consectetur tenetur adipisci nesciunt pariatur maxime.', 'Lana Wachowski', '2022-11-23', 'movie_.1673012011.jpg', 'bg_.1673012011.jpg'),
 (6, 'Zombieland', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet minus a molestiae doloremque ipsam aspernatur.', 'Ruben Fleischer', '2021-06-14', 'movie_.1673018154.jpg', 'bg_.1673018154.jpg'),
-(7, 'Zombieland Double Tap', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet minus a molestiae doloremque ipsam aspernatur.', 'Ruben Fleischer', '2022-06-24', 'movie_.1673018295.jpg', 'bg_.1673018295.jpg');
+(7, 'Zombieland Double Tap', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet minus a molestiae doloremque ipsam aspernatur.', 'Ruben Fleischer', '2022-06-24', 'movie_.1673018295.jpg', 'bg_.1673018295.jpg'),
+(8, 'Dr. Strange Multiverse of Madness', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum tempora deleniti distinctio vero sint unde.', 'Sam Raimi', '2022-11-08', 'movie_.1673067269.jpeg', 'bg_.1673067269.jpg');
 
 -- --------------------------------------------------------
 
@@ -162,7 +165,7 @@ CREATE TABLE `movie_actor` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `movie_id` bigint(20) UNSIGNED NOT NULL,
   `actor_id` bigint(20) UNSIGNED NOT NULL,
-  `character_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `character_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -181,7 +184,10 @@ INSERT INTO `movie_actor` (`id`, `movie_id`, `actor_id`, `character_name`) VALUE
 (11, 6, 9, 'Columbus'),
 (12, 7, 5, 'Tallahassee'),
 (13, 7, 9, 'Columbus'),
-(14, 7, 8, 'Wichita');
+(14, 7, 8, 'Wichita'),
+(15, 8, 3, 'Dr. Strange'),
+(16, 8, 10, 'Scarlet Witch'),
+(17, 8, 11, 'America');
 
 -- --------------------------------------------------------
 
@@ -216,7 +222,11 @@ INSERT INTO `movie_genre` (`id`, `movie_id`, `genre_id`) VALUES
 (19, 7, 3),
 (20, 7, 4),
 (21, 7, 5),
-(22, 7, 6);
+(22, 7, 6),
+(23, 8, 5),
+(24, 8, 6),
+(25, 8, 11),
+(26, 8, 12);
 
 -- --------------------------------------------------------
 
@@ -225,8 +235,8 @@ INSERT INTO `movie_genre` (`id`, `movie_id`, `genre_id`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -238,11 +248,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -257,13 +267,13 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `dob` date NOT NULL,
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'member',
-  `image_url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'member',
+  `image_url` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -286,7 +296,7 @@ CREATE TABLE `watchlist` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `movie_id` bigint(20) UNSIGNED NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -388,7 +398,7 @@ ALTER TABLE `watchlist`
 -- AUTO_INCREMENT for table `actor`
 --
 ALTER TABLE `actor`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -412,19 +422,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `movie_actor`
 --
 ALTER TABLE `movie_actor`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `movie_genre`
 --
 ALTER TABLE `movie_genre`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

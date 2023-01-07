@@ -28,7 +28,7 @@
                 <div class="col my-2">
                     <div class="card bg-1">
                         <div class="card-body">
-                        <img class="w-100" width="200px" height="270px" class="my-2" src="{{Storage::url('images/'.$a->image_url)}}" alt="None">
+                        <img class="w-100" width="200px" height="270px" class="my-2" src="{{Storage::url('images/'.$a->image_url)}}" alt="None" loading="lazy">
                             <div class="card-title my-2">
                                 {{ $a->name}}
                             </div>
